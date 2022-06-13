@@ -1,0 +1,36 @@
+{% extends 'blog/base.html' %}
+{% block title %}
+    Login
+{% endblock title %}
+{% block content %}
+
+    {% for message in messages %}
+            <div class="alert alert-primary">
+                <strong>Message: </strong>{{message}}
+            </div>
+    {%endfor%}
+        <br>
+
+    <div class="prof" style="width:600px;margin-left:360px;height:400px;">
+        <form class="container" action="" method="post">
+            {% csrf_token %}
+            <div class="mb-4 mt-4">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" name="username" placeholder="Create Username(only letters and numbers)" required>
+            </div>
+            <div class="mb-5">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password" required>
+            </div>
+            <div class="nwuser" style="margin-left:200px;">
+                <p class="np"><strong>New User?</strong> <a href="/register" style="text-decoration:none;">Register</a></p>
+            </div>
+            <br>
+
+
+            <button style="margin-left:250px" type="submit" class="btn btn-primary">Log in</button>
+
+        </form>
+
+    </div>
+{% endblock content %}

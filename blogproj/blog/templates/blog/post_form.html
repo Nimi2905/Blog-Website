@@ -1,0 +1,18 @@
+{% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+    Create Post
+{% endblock title %}
+{% block content %}
+
+    <div class="prof" style="width:750px;margin-left:260px;">
+        <form class="container" style="line-height:60px" action="" method="post">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button type="submit" class="btn btn-primary mt-5 mb-5">Post</button>
+            <a href="/" class="btn btn-primary ms-4">Go Back</a>
+        </form>
+
+    </div>
+
+{% endblock content %}

@@ -1,0 +1,28 @@
+{% extends 'blog/base.html' %}
+{% block title %}
+    Post-Detail
+{% endblock title %}
+
+{% block content %}
+        <article class="media content-section">
+
+            <div  style="float:left ; height:100%;position:absolute;margin-top:20px;"><img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}" ></div>
+            <div class="media-body" style="margin-left:100px">
+
+                <div class="article-metadata">
+
+                    <a class="mr-2" href="#" style="color:#0000aa;">{{ object.author }}</a>
+                    <small  class="text-muted">{{ object.date_posted }}</small>
+                </div>
+                <h2><a class="article-title text-muted" style="text-decoration:none;font-family: 'Poppins', sans-serif;" >{{ object.title }}</a></h2>
+                <pre><p class="article-content" style="font-family:'Poppins';font-size:18px">{{ object.content }}</p></pre>
+                {% if object.author == request.user %}
+                    <a class="btn btn-success mt-3" href="{% url 'blog-update' post.id %}">Update</a>
+                    <a class="btn btn-danger mt-3 ms-3" href="{% url 'blog-delete' post.id %}">Delete</a>
+                {% endif %}
+            </div>
+
+            <br>
+        </article>
+
+{% endblock %}

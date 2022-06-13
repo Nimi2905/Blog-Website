@@ -1,0 +1,25 @@
+{% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+    Register
+{% endblock title %}
+{% block content %}
+            {% for message in messages %}
+            <div class="alert alert-primary">
+                <strong>Message: </strong>{{message}}
+            </div>
+            {%endfor%}
+        <br>
+
+
+    <div class="prof" style="width:650px;margin-left:360px;">
+        <form class="container" style="line-height:40px" action="" method="post">
+            {% csrf_token %}
+            {{ forms|crispy }}
+            {{ p_form_crispy }}
+            <button type="submit" class="btn btn-primary mt-5 mb-5">Register</button>
+        </form>
+        Already have an account? <a href="/login1" class="btn btn-primary ms-4">Login</a>
+    </div>
+
+{% endblock content %}

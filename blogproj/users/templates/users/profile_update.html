@@ -1,0 +1,25 @@
+{% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}
+    Profile-Update
+{% endblock title %}
+{% block content %}
+
+    <div class="prof text-muted" style="width:70%; margin-left:15%" >
+        <div class="imgclass" align="center"> <img class="rounded-circle account-img img-class" id="profile-img" src='{{ user.profile.image.url }}' width="200" height="200" alt="User-Profile-Image">
+        <h1 id="profile-h1">{{ user.first_name }} {{ user.last_name }}</h1>
+            <p class="title">{{ user.email }}</p>
+
+        </div>
+        <div style="width:80%;margin-left:10%;line-height:40px">
+            <form method="post" action="" enctype="multipart/form-data">{% csrf_token %}  <!--use of enctype to upload file-->
+                <div align="center">{{ u_form|crispy }}</div>
+                <div style="margin-top:20px">{{ p_form.image|as_crispy_field }}</div>
+                <button class="btn btn-outline-info mt-5 mb-5" type="submit">Update Profile</button>
+                <a href="../profile"><button class="btn btn-outline-info mt-5 mb-5">Back</button></a>
+            </form>
+        </div>
+
+    </div>
+
+{% endblock content %}

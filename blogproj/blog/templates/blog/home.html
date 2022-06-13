@@ -1,0 +1,29 @@
+{% extends 'blog/base.html' %}
+{% block title %}
+    Home
+{% endblock title %}
+
+{% block content %}
+        {% for message in messages %}
+            <div class="alert alert-primary">
+                <strong>Message: </strong>{{message}}
+            </div>
+        {%endfor%}
+    {% for post in posts %}
+        <article class="media content-section" style="">
+
+            <div  style="float:left ; height:100%;position:absolute;margin-top:20px;"><img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}" ></div>
+            <div class="media-body" style="margin-left:100px;">
+
+                <div class="article-metadata">
+
+                    <a class="mr-2" href="#" style="color:#0000aa;">{{ post.author }}</a>
+                    <small  class="text-muted">{{ post.date_posted }}</small>
+                </div>
+                <h2><a class="article-title text-muted" style="text-decoration:none;font-family: 'Poppins', sans-serif;" href="{% url 'blog-detail' post.id %}">{{ post.title }}</a></h2>
+                <pre><p class="article-content md-sec" style="font-family:'Poppins';font-size:18px">{{ post.content }}</p></pre>
+            </div>
+            <br>
+        </article>
+    {% endfor %}
+{% endblock %}

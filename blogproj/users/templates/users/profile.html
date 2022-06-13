@@ -1,0 +1,26 @@
+{% extends 'blog/base.html' %}
+{% block title %}
+    {{user.first_name}} Profile
+{% endblock title %}
+
+{% block content %}
+    {% for message in messages %}
+            <div class="alert alert-primary">
+                <strong>Message: </strong>{{message}}
+            </div>
+    {%endfor%}
+    <div class="prof text-muted">
+        <div class="imgclass" align="center"> <img class="rounded-circle account-img img-class" id="profile-img" src='{{ user.profile.image.url }}' width="200" height="200" alt="User-Profile-Image">
+        <h1 id="profile-h1">{{ user.first_name }} {{ user.last_name }}</h1>
+            <p class="title">{{ user.email }}</p>
+
+        </div>
+        <div class="upddiv">
+
+                <a href="../profile_update/"><button class="btn btn-outline-info">Edit Profile</button></a>
+
+        </div>
+
+    </div>
+
+{% endblock content %}
